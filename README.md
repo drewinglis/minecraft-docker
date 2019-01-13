@@ -26,9 +26,9 @@ The only one-time setup you need to do is create a docker volume to store the wo
 
 To run the Minecraft server:
 
-		GCP_PROJECT_ID=your-project-id
-		MC_VERSION=1.12.2
-		SERVER_TYPE=vanilla # or carpet
+    GCP_PROJECT_ID=your-project-id
+    MC_VERSION=1.12.2
+    SERVER_TYPE=vanilla # or carpet
     docker run -it -d -p 25565:25565 -v minecraft-data:/etc/minecraft --name minecraft-server gcr.io/${GCP_PROJECT_ID}/minecraft-${SERVER_TYPE}:${MC_VERSION}
 
 ## License & Copyright
