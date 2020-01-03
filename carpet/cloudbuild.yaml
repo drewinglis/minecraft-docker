@@ -1,0 +1,17 @@
+# Config for Google Cloud Build
+#
+# Run with:
+#   gcloud builds submit --config cloudbuild.yaml .
+
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [
+      'build', '-t', 'gcr.io/$PROJECT_ID/minecraft-carpet:${_CARPET_VERSION}',
+          '--build-arg', 'CARPET_VERSION=${_CARPET_VERSION}',
+          '--build-arg', 'VANILLA_CONTAINER=gcr.io/$PROJECT_ID/minecraft-vanilla',
+          '.']
+    timeout: 500s
+substitutions:
+  _CARPET_VERSION: 'v19_01_07'
+images:
+  - 'gcr.io/$PROJECT_ID/minecraft-carpet:${_CARPET_VERSION}'
